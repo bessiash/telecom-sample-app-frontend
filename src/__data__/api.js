@@ -1,5 +1,13 @@
+import { get } from 'lodash-es'
+
+const defaultApiRoot = 'http://localhost:8000/api/'
+
+function getApiRoot () {
+    return get(window, ['config', 'apiRoot'], defaultApiRoot)
+}
+
 function* login (username, password) {
-    return yield fetch('http://localhost:8000/api/auth/token/obtain/',
+    return yield fetch('${getApiRoot()}auth/token/obtain/',
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -11,7 +19,7 @@ function* login (username, password) {
 }
 
 function* refreshAccessToken (token) {
-    return yield fetch('http://localhost:8000/api/auth/token/refresh/',
+    return yield fetch('${getApiRoot()}auth/token/refresh/',
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -23,7 +31,7 @@ function* refreshAccessToken (token) {
 }
 
 function* getTelecomOperators (authorization = {}) {
-    return yield fetch('http://localhost:8000/api/telecom/operator/',
+    return yield fetch('${getApiRoot()}telecom/operator/',
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +43,7 @@ function* getTelecomOperators (authorization = {}) {
 }
 
 function* getPurce (authorization = {}) {
-    return yield fetch('http://localhost:8000/api/telecom/purce/',
+    return yield fetch('${getApiRoot()}telecom/purce/',
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +55,7 @@ function* getPurce (authorization = {}) {
 }
 
 function* refill (id, phone, amount, authorization = {}) {
-    return yield fetch(`http://localhost:8000/api/telecom/operator/${id}/refill/`,
+    return yield fetch(`${getApiRoot()}telecom/operator/${id}/refill/`,
         {
             headers: {
                 'Content-Type': 'application/json',
