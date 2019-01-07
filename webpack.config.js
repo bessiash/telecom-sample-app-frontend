@@ -9,7 +9,7 @@ module.exports = (env, options) => {
     const isProd = mode === 'production'
 
     const optimization = isProd ? { minimizer: [new UglifyJsPlugin()] } : {}
-    const config = '{"apiRoot": "http://kormilov_vk.hldns.ru/api/"}'
+    const config = '{"apiRoot": "/api/"}'
 
     return {
         entry: ['babel-polyfill', './src/index.js'],
