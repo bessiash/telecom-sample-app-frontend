@@ -7,7 +7,7 @@ function getApiRoot () {
 }
 
 function* login (username, password) {
-    return yield fetch('${getApiRoot()}auth/token/obtain/',
+    return yield fetch(`${getApiRoot()}auth/token/obtain/`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ function* login (username, password) {
 }
 
 function* refreshAccessToken (token) {
-    return yield fetch('${getApiRoot()}auth/token/refresh/',
+    return yield fetch(`${getApiRoot()}auth/token/refresh/`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function* refreshAccessToken (token) {
 }
 
 function* getTelecomOperators (authorization = {}) {
-    return yield fetch('${getApiRoot()}telecom/operator/',
+    return yield fetch(`${getApiRoot()}telecom/operator/`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function* getTelecomOperators (authorization = {}) {
 }
 
 function* getPurce (authorization = {}) {
-    return yield fetch('${getApiRoot()}telecom/purce/',
+    return yield fetch(`${getApiRoot()}telecom/purce/`,
         {
             headers: {
                 'Content-Type': 'application/json',
